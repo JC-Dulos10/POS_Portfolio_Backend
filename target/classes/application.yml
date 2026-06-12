@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://db:5432/posdb
+    username: posuser
+    password: pospassword
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    secret: FoLcO78eTxV5HyGw2N7UrzkloSi3GGPfMjpdiXfq1JY
+    expiration-ms: 3600000
+
+logging:
+  level:
+    org:
+      springframework:
+        security: INFO
