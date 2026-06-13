@@ -1,4 +1,6 @@
 package com.posportfolio.dto;
 
-public record SignupRequest(String username, String password) {
+import com.posportfolio.model.Role;
+
+public record SignupRequest(String username, String password, Role role) {
 }
