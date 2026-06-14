@@ -13,6 +13,8 @@ import com.posportfolio.repository.SaleItemRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -130,11 +132,12 @@ public class SaleController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getSaleById(@PathVariable Long id) {
+    public ResponseEntity<?> getSaleById(@PathVariable("id") Long id) {
         return saleRepository.findById(id)
                 .map(sale -> ResponseEntity.ok(convertToDto(sale)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
+
 
     private SaleDto convertToDto(SaleEntity sale) {
         List<SaleItemDto> itemDtos = sale.getItems().stream()
