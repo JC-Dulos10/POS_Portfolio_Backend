@@ -26,7 +26,7 @@ jobs:
       id-token: write
     concurrency:
       cancel-in-progress: false
-      group: deploy-POS_Portfolio_Backend-${{ github.event.inputs.stack || 'production' }}
+      group: deploy-pos_portfolio_backend-${{ github.event.inputs.stack || 'production' }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -34,14 +34,14 @@ jobs:
         uses: DefangLabs/defang-github-action@v2
         with:
           command: ${{ github.event.inputs.action || 'up' }}
-          project: POS_Portfolio_Backend
+          project: pos_portfolio_backend
           stack: ${{ github.event.inputs.stack || 'production' }}
           compose-files: docker-compose.yml
       - name: Deployment Summary
         uses: DefangLabs/defang-github-action@v2
         with:
           command: services
-          project: POS_Portfolio_Backend
+          project: pos_portfolio_backend
           stack: ${{ github.event.inputs.stack || 'production' }}
           compose-file: docker-compose.yml
     environment: defang-production
